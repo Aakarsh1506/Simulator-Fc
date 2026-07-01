@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Logo from "./Logo";
-import GroupCards from "./GroupCards";
-import ThirdPlaceCards from "./ThirdPlaceCards";
+import Logo from "./Pages/Logo";
+import GroupCards from "./Pages/GroupCards";
+import ThirdPlaceCards from "./Pages/ThirdPlaceCards";
 import {
   useGroupLogic,
   groups,
-} from "./GroupLogic";
+} from "./Pages/GroupLogic";
 import {
   useThirdPlaceLogic,
   getThirdPlaceTeams,
