@@ -10,7 +10,7 @@ import {
   useThirdPlaceLogic,
   getThirdPlaceTeams,
   areAllGroupsComplete,
-} from "./ThirdPlaceLogic";
+} from "./Pages/ThirdPlaceLogic";
 import "./App.css";
 
 const App = () => {
