@@ -1,0 +1,38 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.continue-bar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background: #f4faf9;
+}
+
+.continue-button {
+  background: #1a8fd1;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+.continue-button:hover:not(:disabled) {
+  background: #147ab5;
+}
+.continue-button:disabled {
+  background: #b5cfcb;
+  cursor: not-allowed;
+}

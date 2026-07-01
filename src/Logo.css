@@ -1,0 +1,14 @@
+.logo-bar {
+  background: #1a8fd1;
+  padding: 10px 20px;
+  width: fit-content;
+  border-radius: 6px;
+  margin: 12px 0 0 20px;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
