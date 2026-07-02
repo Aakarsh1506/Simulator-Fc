@@ -8,6 +8,10 @@ html, body, #root {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  background-image: url("./assets/stadium-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .continue-bar {
@@ -15,7 +19,7 @@ html, body, #root {
   display: flex;
   justify-content: center;
   padding: 10px 0;
-  background: #f4faf9;
+  background: rgba(244, 250, 249, 0.9);
 }
 
 .continue-button {
@@ -29,10 +33,32 @@ html, body, #root {
   cursor: pointer;
   transition: background 0.15s ease, opacity 0.15s ease;
 }
+
 .continue-button:hover:not(:disabled) {
   background: #147ab5;
 }
+
 .continue-button:disabled {
   background: #b5cfcb;
   cursor: not-allowed;
+}
+
+/* ---- Mobile: let the page scroll naturally instead of clipping to 100vh ---- */
+@media (max-width: 768px) {
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    background-attachment: scroll;
+  }
+
+  .continue-bar {
+    padding: 10px 12px;
+  }
+
+  .continue-button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
 }

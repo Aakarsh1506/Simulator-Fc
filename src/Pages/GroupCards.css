@@ -4,11 +4,12 @@
   grid-template-rows: repeat(3, 1fr);
   gap: 24px;
   padding: 20px;
-  background: #f4faf9;
+  background: rgba(244, 250, 249, 0.9);
   flex: 1;
   min-height: 0;
   box-sizing: border-box;
 }
+
 .group-cards {
   background: #ffffff;
   border: 2px solid #1a8fd1;
@@ -17,13 +18,15 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  min-height: 0; /* lets this shrink to fit its grid cell instead of overflowing */
+  min-height: 0;
 }
+
 .group-header {
   background: #1a8fd1;
   padding: 8px 12px;
   flex-shrink: 0;
 }
+
 .group-cards-title {
   font-weight: 700;
   font-size: 13px;
@@ -32,14 +35,16 @@
   color: #ffffff;
   margin: 0;
 }
+
 .group-ard-team {
   display: flex;
   flex-direction: column;
   gap: 6px;
   flex: 1;
-  min-height: 0; /* same fix, one level down */
+  min-height: 0;
   padding: 10px;
 }
+
 .team-slot {
   display: flex;
   align-items: center;
@@ -53,19 +58,23 @@
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
 }
+
 .team-slot:hover {
   border-color: #1a8fd1;
   background: #eefaff;
   transform: translateY(-1px);
 }
+
 .team-slot.selected {
   border-color: #4fb3e8;
   background: #e8f6fe;
 }
+
 .team-slot.auto-selected {
   border-color: #e74c3c;
-  background: #fdeceb; /* solid fill now, not dashed */
+  background: #fdeceb;
 }
+
 .team-radio {
   width: 18px;
   height: 18px;
@@ -79,16 +88,19 @@
   font-weight: 700;
   color: #23423c;
 }
+
 .team-slot.selected .team-radio {
   border-color: #4fb3e8;
   background: #4fb3e8;
   color: #ffffff;
 }
+
 .team-slot.auto-selected .team-radio {
   border-color: #e74c3c;
   background: #e74c3c;
   color: #ffffff;
 }
+
 .team-flag {
   width: 20px;
   height: 14px;
@@ -96,8 +108,40 @@
   border-radius: 2px;
   flex-shrink: 0;
 }
+
 .team-name {
   font-size: 12px;
   font-weight: 500;
   color: #23423c;
+}
+
+/* ---- Tablet: 2 columns instead of 4 ---- */
+@media (max-width: 1024px) {
+  .groups-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+  }
+}
+
+/* ---- Mobile: single column, natural page scroll ---- */
+@media (max-width: 768px) {
+  .groups-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 14px;
+    padding: 14px;
+    flex: none;
+  }
+
+  .group-cards {
+    min-height: 190px;
+  }
+
+  .team-slot {
+    padding: 10px 12px;
+  }
+
+  .team-name {
+    font-size: 13px;
+  }
 }

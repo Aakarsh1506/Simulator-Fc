@@ -3,18 +3,19 @@
   flex-direction: column;
   flex: 1;
   min-height: 0;
-  background: #f4faf9;
+  background: rgba(244, 250, 249, 0.9);
   padding: 20px;
   box-sizing: border-box;
   gap: 14px;
 }
 
 .ko-bracket-scroll {
-  display: flex;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(130px, 1.15fr) repeat(4, minmax(0, 1fr));
+  gap: clamp(6px, 1vw, 18px);
   flex: 1;
   min-height: 0;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: auto;
   padding-bottom: 8px;
 }
@@ -22,19 +23,18 @@
 .ko-round-column {
   display: flex;
   flex-direction: column;
-  min-width: 190px;
-  flex-shrink: 0;
+  min-width: 0;
 }
 
 .ko-round-header {
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.5px;
+  font-size: clamp(9px, 0.9vw, 12px);
+  letter-spacing: 0.3px;
   text-transform: uppercase;
   color: #ffffff;
   background: #1a8fd1;
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 6px 4px;
   text-align: center;
   margin-bottom: 10px;
   flex-shrink: 0;
@@ -49,21 +49,15 @@
   min-height: 0;
 }
 
-/* ---- Center column: Final (with champion above) + 3rd place (with result beside) ---- */
 .ko-center-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 40px;
-  flex-shrink: 0;
-  min-width: 190px;
+  min-width: 0;
   padding: 0 4px;
   border-left: 2px dashed #d8ece8;
   border-right: 2px dashed #d8ece8;
-}
-
-.ko-center-column .ko-round-column {
-  min-width: 0;
 }
 
 .ko-final-wrap {
@@ -143,7 +137,6 @@
   color: #147ab5;
 }
 
-/* ---- Match cards ---- */
 .ko-match {
   background: #ffffff;
   border: 2px solid #e3f0ee;
@@ -185,8 +178,8 @@
 }
 
 .ko-flag {
-  width: 20px;
-  height: 14px;
+  width: clamp(14px, 1.4vw, 20px);
+  height: clamp(10px, 1vw, 14px);
   object-fit: cover;
   border-radius: 2px;
   flex-shrink: 0;
@@ -198,8 +191,51 @@
 }
 
 .ko-team-name {
-  font-size: 12px;
+  font-size: clamp(9px, 0.85vw, 12px);
   font-weight: 500;
   color: #23423c;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Mobile: too many teams to squeeze into one screen width readably —
+   switch to horizontal scroll with fixed, legible column widths ---- */
+@media (max-width: 900px) {
+  .knockout-wrapper {
+    padding: 14px;
+    flex: none;
+  }
+
+  .ko-bracket-scroll {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    gap: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ko-round-column {
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+
+  .ko-center-column {
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+
+  .ko-round-header {
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+
+  .ko-team-name {
+    font-size: 12px;
+  }
+
+  .ko-flag {
+    width: 18px;
+    height: 13px;
+  }
 }
