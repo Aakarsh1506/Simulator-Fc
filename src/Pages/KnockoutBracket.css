@@ -1,0 +1,205 @@
+.knockout-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: #f4faf9;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 14px;
+}
+
+.ko-bracket-scroll {
+  display: flex;
+  gap: 18px;
+  flex: 1;
+  min-height: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding-bottom: 8px;
+}
+
+.ko-round-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+  flex-shrink: 0;
+}
+
+.ko-round-header {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #1a8fd1;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.ko-round-matches {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- Center column: Final (with champion above) + 3rd place (with result beside) ---- */
+.ko-center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  flex-shrink: 0;
+  min-width: 190px;
+  padding: 0 4px;
+  border-left: 2px dashed #d8ece8;
+  border-right: 2px dashed #d8ece8;
+}
+
+.ko-center-column .ko-round-column {
+  min-width: 0;
+}
+
+.ko-final-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ko-third-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+.ko-third-column {
+  flex: 1;
+}
+
+.ko-third-column .ko-round-header {
+  background: #8aa39d;
+}
+
+.ko-connector-v {
+  width: 2px;
+  height: 20px;
+  background: #b5cfcb;
+}
+
+.ko-connector-h {
+  width: 20px;
+  height: 2px;
+  background: #b5cfcb;
+  flex-shrink: 0;
+}
+
+.ko-result-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 2px solid #1a8fd1;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ko-result-side {
+  border-color: #8aa39d;
+}
+
+.ko-result-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #23423c;
+}
+
+.ko-result-icon {
+  font-size: 14px;
+}
+
+.ko-result-team {
+  border-bottom: none;
+  padding: 2px 6px;
+  cursor: default;
+}
+
+.ko-result-team .ko-team-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: #147ab5;
+}
+
+/* ---- Match cards ---- */
+.ko-match {
+  background: #ffffff;
+  border: 2px solid #e3f0ee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.ko-team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #e3f0ee;
+}
+
+.ko-team:last-child {
+  border-bottom: none;
+}
+
+.ko-team:hover:not(.ko-tbd) {
+  background: #eefaff;
+}
+
+.ko-team.ko-winner {
+  background: #e8f6fe;
+}
+
+.ko-team.ko-winner .ko-team-name {
+  font-weight: 700;
+  color: #147ab5;
+}
+
+.ko-team.ko-tbd {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.ko-flag {
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ko-flag-placeholder {
+  background: #e3f0ee;
+  border-radius: 2px;
+}
+
+.ko-team-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #23423c;
+  white-space: nowrap;
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Logo from "./Pages/Logo";
 import GroupCards from "./Pages/GroupCards";
 import ThirdPlaceCards from "./Pages/ThirdPlaceCards";
+import KnockoutBracket from "./Pages/KnockoutBracket";
 import {
   useGroupLogic,
   groups,
@@ -11,13 +12,15 @@ import {
   getThirdPlaceTeams,
   areAllGroupsComplete,
 } from "./Pages/ThirdPlaceLogic";
+import { useKnockoutLogic } from "./Pages/KnockoutLogic";
 import "./App.css";
 
 const App = () => {
-  const [page, setPage] = useState("groups"); // 'groups' | 'thirdPlace'
+  const [page, setPage] = useState("groups"); // 'groups' | 'thirdPlace' | 'knockout'
 
   const { rankings, handleTeamClick, getTeamRank } = useGroupLogic();
   const {
+    selectedOrder,
     handleThirdPlaceClick,
     getThirdPlaceStatus,
     getThirdPlaceRank,
@@ -25,6 +28,14 @@ const App = () => {
 
   const allComplete = areAllGroupsComplete(groups, rankings);
   const thirdPlaceTeams = getThirdPlaceTeams(groups, rankings);
+  const thirdPlaceComplete = selectedOrder.length === 8;
+
+  const { matches, pickWinner, champion, thirdPlaceFinisher } = useKnockoutLogic(
+    groups,
+    rankings,
+    thirdPlaceTeams,
+    selectedOrder
+  );
 
   return (
     <div className="app-shell">
@@ -51,11 +62,33 @@ const App = () => {
       )}
 
       {page === "thirdPlace" && (
-        <ThirdPlaceCards
-          thirdPlaceTeams={thirdPlaceTeams}
-          handleThirdPlaceClick={handleThirdPlaceClick}
-          getThirdPlaceStatus={getThirdPlaceStatus}
-          getThirdPlaceRank={getThirdPlaceRank}
+        <>
+          <ThirdPlaceCards
+            thirdPlaceTeams={thirdPlaceTeams}
+            handleThirdPlaceClick={handleThirdPlaceClick}
+            getThirdPlaceStatus={getThirdPlaceStatus}
+            getThirdPlaceRank={getThirdPlaceRank}
+          />
+          <div className="continue-bar">
+            <button
+              className="continue-button"
+              disabled={!thirdPlaceComplete}
+              onClick={() => setPage("knockout")}
+            >
+              {thirdPlaceComplete
+                ? "Continue to Round of 32 →"
+                : "Pick 8 third-place teams to continue"}
+            </button>
+          </div>
+        </>
+      )}
+
+      {page === "knockout" && (
+        <KnockoutBracket
+          matches={matches}
+          pickWinner={pickWinner}
+          champion={champion}
+          thirdPlaceFinisher={thirdPlaceFinisher}
         />
       )}
     </div>
